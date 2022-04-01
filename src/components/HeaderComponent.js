@@ -10,11 +10,15 @@ class Header extends Component {
         super(props);
         this.state={
             isNavOpen: false,
-            isLoginModalOpen: false
+            isLoginModalOpen: false,
+            isSignupModalOpen: false
         }
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleLoginModal = this.toggleLoginModal.bind(this);
+        this.toggleSignupModal = this.toggleSignupModal.bind(this);
         this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+        this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
+
         
     }
 
@@ -29,7 +33,20 @@ class Header extends Component {
             isLoginModalOpen: !this.state.isLoginModalOpen
         });
     }
+
+    toggleSignupModal() {
+        this.setState({
+            isSignupModalOpen: !this.state.isSignupModalOpen
+        });
+    }
+
+
     handleLoginSubmit(values) {
+        console.log('Current State is: ' + JSON.stringify(values));
+        alert('Current State is: ' + JSON.stringify(values));
+    }
+
+    handleSignupSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
         alert('Current State is: ' + JSON.stringify(values));
     }
@@ -73,7 +90,7 @@ class Header extends Component {
                                     Login 
                                 </Button>
                                 {' '}
-                                <Button>
+                                <Button outline onClick={this.toggleSignupModal}> 
                                 <span className="fa fa-user"></span>{' '}
                                     Sign Up 
                                 </Button>
@@ -96,6 +113,7 @@ class Header extends Component {
                         </div>
                     </div>
                 </Jumbotron>
+
                 <Modal isOpen={this.state.isLoginModalOpen}
                 toggle={this.toggleLoginModal}>
                     <ModalHeader toggle={this.toggleLoginModal}>Login
@@ -129,11 +147,67 @@ class Header extends Component {
                                     </Button>
                                 </Col>
                             </Row>
-
                         </LocalForm>
                     </ModalBody>
-
                 </Modal>
+
+                <Modal isOpen={this.state.isSignupModalOpen}
+                toggle={this.toggleSignupModal}>
+                    <ModalHeader toggle={this.toggleSignupModal}>Login
+                    </ModalHeader>
+                    <ModalBody>
+                        <LocalForm onSubmit={(values) => this.handleSignupSubmit(values)}>
+                        <Row className="form-group">
+                        <Label htmlFor="firstname" md={12}>First Name</Label>
+                        <Col md={12}>
+                            <Control.text model=".firstname" id="firstname" name="firstname"
+                            placeholder="First Name"
+                            className="form-control">
+                            </Control.text>
+                        </Col>
+                        </Row>
+
+                        <Row className="form-group">
+                        <Label htmlFor="lastname" md={12}>Last Name</Label>
+                        <Col md={12}>
+                            <Control.text model=".lastname" id="lastname" name="lastname"
+                            placeholder="Last Name"
+                            className="form-control">
+                            </Control.text>
+                        </Col>
+                        </Row>
+
+                        <Row className="form-group">
+                        <Label htmlFor="email" md={12}>Email:</Label>
+                        <Col md={12}>
+                            <Control.text model=".email" id="email" name="email"
+                            placeholder="E-mail"
+                            className="form-control">
+                            </Control.text>
+                        </Col>
+                        </Row>
+
+                        <Row className="form-group">
+                        <Label htmlFor="password" md={12}>Password:</Label>
+                        <Col md={12}>
+                            <Control.password model=".password" id="passowrd" name="password"
+                            placeholder="Password"
+                            className="form-control">
+                            </Control.password>
+                        </Col>
+                        </Row>
+                        
+                        <Row className="form-group">
+                                <Col md={{size:10}}>
+                                    <Button type="submit" color="primary">
+                                    Submit
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </LocalForm>
+                    </ModalBody>
+                </Modal>
+
             </React.Fragment>
         );
     }
