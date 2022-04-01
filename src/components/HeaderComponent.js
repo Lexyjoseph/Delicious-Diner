@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label, Container, NavLink} from 'reactstrap';
+    Row, Col, Label, NavLink} from 'reactstrap';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 
 class Header extends Component {
 
@@ -9,8 +10,11 @@ class Header extends Component {
         super(props);
         this.state={
             isNavOpen: false,
+            isLoginModalOpen: false
         }
         this.toggleNav = this.toggleNav.bind(this);
+        this.toggleLoginModal = this.toggleLoginModal.bind(this);
+        this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
         
     }
 
@@ -18,6 +22,16 @@ class Header extends Component {
         this.setState({
             isNavOpen: !this.state.isNavOpen
         });
+    }
+
+    toggleLoginModal() {
+        this.setState({
+            isLoginModalOpen: !this.state.isLoginModalOpen
+        });
+    }
+    handleLoginSubmit(values) {
+        console.log('Current State is: ' + JSON.stringify(values));
+        alert('Current State is: ' + JSON.stringify(values));
     }
 
     render() {
@@ -54,7 +68,7 @@ class Header extends Component {
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <Button>
+                                <Button outline onClick={this.toggleLoginModal}>
                                 <span className="fa fa-sign-in"></span>{' '}
                                     Login 
                                 </Button>
@@ -82,6 +96,44 @@ class Header extends Component {
                         </div>
                     </div>
                 </Jumbotron>
+                <Modal isOpen={this.state.isLoginModalOpen}
+                toggle={this.toggleLoginModal}>
+                    <ModalHeader toggle={this.toggleLoginModal}>Login
+                    </ModalHeader>
+                    <ModalBody>
+                        <LocalForm onSubmit={(values) => this.handleLoginSubmit(values)}>
+                        <Row className="form-group">
+                        <Label htmlFor="email" md={12}>Email:</Label>
+                        <Col md={12}>
+                            <Control.text model=".email" id="email" name="email"
+                            placeholder="E-mail"
+                            className="form-control">
+                            </Control.text>
+                        </Col>
+                        </Row>
+
+                        <Row className="form-group">
+                        <Label htmlFor="password" md={12}>Password:</Label>
+                        <Col md={12}>
+                            <Control.password model=".password" id="passowrd" name="password"
+                            placeholder="Password"
+                            className="form-control">
+                            </Control.password>
+                        </Col>
+                        </Row>
+
+                        <Row className="form-group">
+                                <Col md={{size:10}}>
+                                    <Button type="submit" color="primary">
+                                    Submit
+                                    </Button>
+                                </Col>
+                            </Row>
+
+                        </LocalForm>
+                    </ModalBody>
+
+                </Modal>
             </React.Fragment>
         );
     }
