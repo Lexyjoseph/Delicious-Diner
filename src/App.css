@@ -1,3 +1,15 @@
 .navbar-dark {
   background-color: #070505;
 }
+.jumbotron {
+  height: 550px;
+  background-image: url("/public/assets/images/jumbotron.jpg");
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
+  color: white;
+}
+.jumbotron h1{
+  font-weight: bolder;
+  font-size: 50px;
+}

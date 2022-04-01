@@ -64,14 +64,24 @@ class Header extends Component {
                                     Sign Up 
                                 </Button>
                             </NavItem>
-                            <NavItem>
-                                
-                            </NavItem>
-
                         </Nav>
                         </Collapse>
                     </div>
                 </Navbar>
+
+                <Jumbotron>
+                    <div className="container">
+                        <div className="row row-header">
+                            <div className="col-12 col-sm-5">
+                                <h1>DELICIOUS DINER</h1> <br/>
+                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat".</p>
+                                <Button>
+                                    Book a Table 
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </Jumbotron>
             </React.Fragment>
         );
     }
