@@ -89,23 +89,23 @@ class Header extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                         <Nav navbar>
                             <NavItem>
-                                <NavLink className="nav-link" to="/home">
-                                    <span className="fa fa-home fa-lg"></span>{' '}Home
+                                <NavLink className="nav-link" to="/home"> &nbsp; &nbsp; &nbsp;
+                                    Home
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link"  to='/menu'>
-                                    <span className="fa fa-list fa-lg"></span>{' '} Menu
+                                <NavLink className="nav-link"  to='/menu'> &nbsp; &nbsp; &nbsp;
+                                    Menu
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                    <NavLink className="nav-link" to='/aboutus'>
-                                        <span className="fa fa-info fa-lg"></span>{' '} About Us
+                                    <NavLink className="nav-link" to='/aboutus'> &nbsp; &nbsp; &nbsp;
+                                        About
                                     </NavLink>
                                 </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to='/contactus'>
-                                    <span className="fa fa-address-card fa-lg"></span>{' '} Contact Us
+                                <NavLink className="nav-link" to='/contactus'>&nbsp; &nbsp; &nbsp;
+                                    Contact
                                 </NavLink>
                             </NavItem>
                         </Nav>
@@ -131,7 +131,7 @@ class Header extends Component {
                         <div className="row row-header">
                             <div className="col-12 col-sm-5">
                                 <h1>DELICIOUS DINER</h1> <br/>
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat".</p>
+                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat".</p><br/>
                                 <Button outline onClick={this.toggleBookingModal}>
                                     Reserve Table 
                                 </Button>

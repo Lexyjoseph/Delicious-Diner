@@ -13,3 +13,9 @@
   font-weight: bolder;
   font-size: 50px;
 }
+.footer {
+    background-color: #0a0a0a;
+    color: white;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
