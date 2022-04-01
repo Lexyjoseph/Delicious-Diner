@@ -25,9 +25,7 @@ class Header extends Component {
         this.toggleLoginModal = this.toggleLoginModal.bind(this);
         this.toggleSignupModal = this.toggleSignupModal.bind(this);
         this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
-        this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
-
-        
+        this.handleSignupSubmit = this.handleSignupSubmit.bind(this);   
     }
 
     toggleNav() {
@@ -122,6 +120,8 @@ class Header extends Component {
                     </div>
                 </Jumbotron>
 
+                {/* LOGIN MODAL: */}
+
                 <Modal isOpen={this.state.isLoginModalOpen}
                 toggle={this.toggleLoginModal}>
                     <ModalHeader toggle={this.toggleLoginModal}>Login
@@ -133,21 +133,42 @@ class Header extends Component {
                         <Col md={12}>
                             <Control.text model=".email" id="email" name="email"
                             placeholder="E-mail"
-                            className="form-control">
+                            className="form-control"
+                            validators={{
+                                required, validEmail
+                            }}>
                             </Control.text>
+                            <Errors
+                                className="text-danger"
+                                model=".email"
+                                show="touched"
+                                messages={{
+                                required: 'Required ',
+                                validEmail: 'Invalid Email Address'
+                                }}
+                            />
                         </Col>
                         </Row>
-
                         <Row className="form-group">
                         <Label htmlFor="password" md={12}>Password:</Label>
                         <Col md={12}>
                             <Control.password model=".password" id="passowrd" name="password"
                             placeholder="Password"
-                            className="form-control">
+                            className="form-control"
+                            validators={{
+                                required
+                            }}>
                             </Control.password>
+                            <Errors
+                                className="text-danger"
+                                model=".password"
+                                show="touched"
+                                messages={{
+                                required: 'Required '
+                                }}
+                            />
                         </Col>
                         </Row>
-
                         <Row className="form-group">
                                 <Col md={{size:10}}>
                                     <Button type="submit" color="primary">
@@ -158,6 +179,8 @@ class Header extends Component {
                         </LocalForm>
                     </ModalBody>
                 </Modal>
+
+                {/* SIGNUP MODAL: */}
 
                 <Modal isOpen={this.state.isSignupModalOpen}
                 toggle={this.toggleSignupModal}>
@@ -176,18 +199,17 @@ class Header extends Component {
                             }}>
                             </Control.text>
                             <Errors
-                                    className="text-danger"
-                                    model=".firstname"
-                                    show="touched"
-                                    messages={{
-                                        required: 'Required ',
-                                        minLength:'Must be greater than 2 characters',
-                                        maxLength: 'Must be 15 characters or less'
-                                    }}
-                                    />
+                                className="text-danger"
+                                model=".firstname"
+                                show="touched"
+                                messages={{
+                                    required: 'Required ',
+                                    minLength:'Must be greater than 2 characters',
+                                    maxLength: 'Must be 15 characters or less'
+                                }}
+                            />
                         </Col>
                         </Row>
-
                         <Row className="form-group">
                         <Label htmlFor="lastname" md={12}>Last Name</Label>
                         <Col md={12}>
@@ -199,18 +221,17 @@ class Header extends Component {
                             }}>
                             </Control.text>
                             <Errors
-                                    className="text-danger"
-                                    model=".lastname"
-                                    show="touched"
-                                    messages={{
-                                        required: 'Required ',
-                                        minLength:'Must be greater than 2 characters',
-                                        maxLength: 'Must be 15 characters or less'
-                                    }}
-                                    />
+                                className="text-danger"
+                                model=".lastname"
+                                show="touched"
+                                messages={{
+                                    required: 'Required ',
+                                    minLength:'Must be greater than 2 characters',
+                                    maxLength: 'Must be 15 characters or less'
+                                }}
+                            />
                         </Col>
                         </Row>
-
                         <Row className="form-group">
                                 <Label htmlFor="telnum" md={12}>Contact Number:</Label>
                                 <Col md={12}>
@@ -226,13 +247,12 @@ class Header extends Component {
                                         model=".telnum"
                                         show="touched"
                                         messages={{
-                                            required: 'Required',
+                                            required: 'Required ',
                                             isNumber: 'Must be a number'
                                         }}
                                      />
                                 </Col>
-                            </Row>
-
+                        </Row>
                         <Row className="form-group">
                         <Label htmlFor="email" md={12}>Email:</Label>
                         <Col md={12}>
@@ -244,17 +264,16 @@ class Header extends Component {
                             }} >
                             </Control.text>
                             <Errors
-                                        className="text-danger"
-                                        model=".email"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            validEmail: 'Invalid Email Address'
-                                        }}
-                                    /> 
+                                className="text-danger"
+                                model=".email"
+                                show="touched"
+                                messages={{
+                                    required: 'Required ',
+                                    validEmail: 'Invalid Email Address'
+                                }}
+                            /> 
                         </Col>
                         </Row>
-
                         <Row className="form-group">
                         <Label htmlFor="password" md={12}>Password:</Label>
                         <Col md={12}>
@@ -262,20 +281,19 @@ class Header extends Component {
                             placeholder="Password"
                             className="form-control" 
                             validators={{
-                                required, validEmail
+                                required
                             }} >
                             </Control.password>
                             <Errors
-                                        className="text-danger"
-                                        model=".password"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                        }}
-                                    /> 
+                                className="text-danger"
+                                model=".password"
+                                show="touched"
+                                messages={{
+                                required: 'Required ',
+                                }}
+                            /> 
                         </Col>
                         </Row>
-                        
                         <Row className="form-group">
                                 <Col md={{size:10}}>
                                     <Button type="submit" color="primary">
