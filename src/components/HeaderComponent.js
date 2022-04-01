@@ -4,6 +4,14 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Row, Col, Label, NavLink} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
+//For Form Validation:
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
+const isNumber = (val) => !isNaN(Number(val));
+const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+
+
 class Header extends Component {
 
     constructor(props) {
@@ -153,7 +161,7 @@ class Header extends Component {
 
                 <Modal isOpen={this.state.isSignupModalOpen}
                 toggle={this.toggleSignupModal}>
-                    <ModalHeader toggle={this.toggleSignupModal}>Login
+                    <ModalHeader toggle={this.toggleSignupModal}>Sign Up
                     </ModalHeader>
                     <ModalBody>
                         <LocalForm onSubmit={(values) => this.handleSignupSubmit(values)}>
@@ -162,8 +170,21 @@ class Header extends Component {
                         <Col md={12}>
                             <Control.text model=".firstname" id="firstname" name="firstname"
                             placeholder="First Name"
-                            className="form-control">
+                            className="form-control"
+                            validators={{
+                                required, minLength: minLength(3), maxLength:maxLength(15)
+                            }}>
                             </Control.text>
+                            <Errors
+                                    className="text-danger"
+                                    model=".firstname"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required ',
+                                        minLength:'Must be greater than 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                    }}
+                                    />
                         </Col>
                         </Row>
 
@@ -172,18 +193,65 @@ class Header extends Component {
                         <Col md={12}>
                             <Control.text model=".lastname" id="lastname" name="lastname"
                             placeholder="Last Name"
-                            className="form-control">
+                            className="form-control"
+                            validators={{
+                                required, minLength: minLength(3), maxLength:maxLength(15)
+                            }}>
                             </Control.text>
+                            <Errors
+                                    className="text-danger"
+                                    model=".lastname"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required ',
+                                        minLength:'Must be greater than 2 characters',
+                                        maxLength: 'Must be 15 characters or less'
+                                    }}
+                                    />
                         </Col>
                         </Row>
+
+                        <Row className="form-group">
+                                <Label htmlFor="telnum" md={12}>Contact Number:</Label>
+                                <Col md={12}>
+                                    <Control.text model=".telnum" id="telnum" name="telnum"
+                                        placeholder="Tel. Number"
+                                        className="form-control"
+                                        validators={{
+                                            required, isNumber
+                                        }}
+                                    />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".telnum"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            isNumber: 'Must be a number'
+                                        }}
+                                     />
+                                </Col>
+                            </Row>
 
                         <Row className="form-group">
                         <Label htmlFor="email" md={12}>Email:</Label>
                         <Col md={12}>
                             <Control.text model=".email" id="email" name="email"
                             placeholder="E-mail"
-                            className="form-control">
+                            className="form-control"
+                            validators={{
+                                required, validEmail
+                            }} >
                             </Control.text>
+                            <Errors
+                                        className="text-danger"
+                                        model=".email"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            validEmail: 'Invalid Email Address'
+                                        }}
+                                    /> 
                         </Col>
                         </Row>
 
@@ -192,8 +260,19 @@ class Header extends Component {
                         <Col md={12}>
                             <Control.password model=".password" id="passowrd" name="password"
                             placeholder="Password"
-                            className="form-control">
+                            className="form-control" 
+                            validators={{
+                                required, validEmail
+                            }} >
                             </Control.password>
+                            <Errors
+                                        className="text-danger"
+                                        model=".password"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                        }}
+                                    /> 
                         </Col>
                         </Row>
                         
