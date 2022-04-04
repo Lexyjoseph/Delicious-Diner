@@ -10,9 +10,9 @@ function Footer(props) {
                     <div className="col-7 col-sm-5">
                         <h5>Our Address</h5>
                         <address>
-		                    121, Clear Water Bay Road<br />
-		                    Clear Water Bay, Kowloon<br />
-		                    HONG KONG<br />
+                        254 Hydethorpe Road,<br/>
+                         London <br/>
+                         SW12 0JH <br/>
 		                    <i className="fa fa-phone fa-lg"></i>: <a href="tel: +62 63652562 ">+62 63652562</a><br />
 		                    <i className="fa fa-fax fa-lg"></i>: <a href="tel: +62 27272727 ">+62 27272727</a><br />
 		                    <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:deliciousdiner@yahoo.com">
