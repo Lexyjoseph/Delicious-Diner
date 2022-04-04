@@ -15,8 +15,8 @@ function Footer(props) {
 		                    HONG KONG<br />
 		                    <i className="fa fa-phone fa-lg"></i>: <a href="tel: +62 63652562 ">+62 63652562</a><br />
 		                    <i className="fa fa-fax fa-lg"></i>: <a href="tel: +62 27272727 ">+62 27272727</a><br />
-		                    <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:confusion@food.net">
-                            confusion@food.net</a>
+		                    <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:deliciousdiner@yahoo.com">
+                            deliciousdiner@yahoo.com</a>
                         </address>
                     </div>
                     <div className="col-12 col-sm-4 align-self-center">
@@ -32,8 +32,8 @@ function Footer(props) {
                 </div>
                 <div className="row justify-content-center">             
                     <div className="col-auto">
-                        <p>© Copyright 2022 Delicious Diner <br/>
-                        Developed by <br/> <span> Lexy Joseph </span></p>
+                        <p>© Copyright 2022 Delicious Diner 
+                        Developed by Lexy Joseph </p>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
-    Row, Col, Label, NavLink} from 'reactstrap';
+    Row, Col, Label } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { NavLink } from 'react-router-dom';
+
+
 
 
 
@@ -456,8 +459,6 @@ class Header extends Component {
                                     </Button>
                                 </Col>
                             </Row>
-                    
-
                         </LocalForm>
                     </ModalBody>
                 </Modal>
