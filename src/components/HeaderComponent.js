@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
-    Row, Col, Label } from 'reactstrap';
+    Row, Col, Label,
+    Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { NavLink } from 'react-router-dom';
 
@@ -21,11 +22,16 @@ class Header extends Component {
 
     constructor(props) {
         super(props);
+
+        this.toggle = this.toggle.bind(this);
+
         this.state={
             isNavOpen: false,
             isLoginModalOpen: false,
             isSignupModalOpen: false,
-            isBookingModalOpen: false
+            isBookingModalOpen: false,
+
+            dropdownOpen: false
         }
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleLoginModal = this.toggleLoginModal.bind(this);
@@ -34,8 +40,6 @@ class Header extends Component {
         this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
         this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
         this.handleBookingFormSubmit = this.handleBookingFormSubmit.bind(this);
-
-   
     }
 
     toggleNav() {
@@ -79,6 +83,12 @@ class Header extends Component {
      
     }
 
+    toggle() {
+        this.setState(prevState => ({
+          dropdownOpen: !prevState.dropdownOpen
+        }));
+    }    
+
     render() {
         
         return(
@@ -96,11 +106,18 @@ class Header extends Component {
                                     Home
                                 </NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link"  to='/menu'> &nbsp; &nbsp; &nbsp;
+                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                <DropdownToggle caret>
                                     Menu
-                                </NavLink>
-                            </NavItem>
+                                </DropdownToggle>
+                                <DropdownMenu>
+                                    <DropdownItem>Starters</DropdownItem>
+                                    <DropdownItem>Soups</DropdownItem>
+                                    <DropdownItem>Vegetarian</DropdownItem>
+                                    <DropdownItem>Non-Vegetarian</DropdownItem>
+                                    <DropdownItem>Drinks</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
                             <NavItem>
                                     <NavLink className="nav-link" to='/aboutus'> &nbsp; &nbsp; &nbsp;
                                         About
